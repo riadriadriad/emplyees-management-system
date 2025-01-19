@@ -72,7 +72,7 @@ class EmployeeControllerTest {
         employeeRepository.save(employee2);
     }
     @Test
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     void testFilterEmployeesByDepartment() throws Exception {
         mockMvc.perform(get("/employees/filter")
                         .param("department", "IT")
@@ -82,7 +82,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.content[0].department").value("IT"))
                 .andExpect(jsonPath("$.content.length()").value(1));
     }
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testFilterEmployeesByEmploymentStatus() throws Exception {
         mockMvc.perform(get("/employees/filter")
@@ -95,7 +95,7 @@ class EmployeeControllerTest {
     }
 
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testFilterEmployeesByHireDateRange() throws Exception {
         mockMvc.perform(get("/employees/filter")
@@ -108,7 +108,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.content.length()").value(1));
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testFilterEmployeesWithAllCriteria() throws Exception {
         mockMvc.perform(get("/employees/filter")
@@ -124,7 +124,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.content.length()").value(1));
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testFilterEmployeesWithoutCriteria() throws Exception {
         mockMvc.perform(get("/employees/filter")
@@ -134,7 +134,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.content.length()").value(2));
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testGetAllEmployees() throws Exception {
         mockMvc.perform(get("/employees/all")
@@ -144,7 +144,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.content.length()").value(2));
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testCreateEmployee() throws Exception {
         EmployeeDto employeeDto = new EmployeeDto(
@@ -159,7 +159,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.fullName").value("Alice Johnson"));
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testUpdateEmployee() throws Exception {
         EmployeeDto employeeDto = new EmployeeDto(
@@ -175,7 +175,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.fullName").value("John Doe Updated"));
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testDeleteEmployee() throws Exception {
         mockMvc.perform(delete("/employees")
@@ -184,7 +184,7 @@ class EmployeeControllerTest {
 
         Assertions.assertFalse(employeeRepository.existsById("1"));
     }
-    @WithMockUser(authorities = {"SCOPE_MANAGER"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_MANAGER"})
     @Test
     void testDeleteEmployeeWithManager() throws Exception {
         mockMvc.perform(delete("/employees")
@@ -193,7 +193,7 @@ class EmployeeControllerTest {
 
     }
 
-    @WithMockUser(authorities = {"SCOPE_ADMIN"})
+    @WithMockUser(username="riad",authorities = {"SCOPE_ADMIN"})
     @Test
     void testGetEmployeeById() throws Exception {
         mockMvc.perform(get("/employees/employee/1"))
