@@ -70,4 +70,4 @@ This project is an Employee Record Management system built with Java and Spring 
 ### Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/riadriadriad/employee-record-management.git
+   git clone https://github.com/riadriadriad/emplyees-management-system.git
