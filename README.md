@@ -71,3 +71,14 @@ This project is an Employee Record Management system built with Java and Spring 
 1. Clone the repository:
    ```sh
    git clone https://github.com/riadriadriad/emplyees-management-system.git
+
+2. Build the JAR with Gradle:
+   ```sh
+    ./gradlew build
+   
+3. Build the Docker image:
+   ```sh  
+    docker build -t employee-record-management .
+4. Run the container, providing the DB_URL, DB_USERNAME, and DB_PASSWORD:
+   ```sh
+    docker run -e DB_URL=your_database_url -e DB_USERNAME=your_database_username -e DB_PASSWORD=your_database_password -p 8099:8099 employee-record-management
